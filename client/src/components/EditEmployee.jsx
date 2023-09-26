@@ -2,11 +2,18 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function EmployeeEdit() {
+function EmployeeEdit(props) {
   const [show, setShow] = useState(false);
+  const [name, setName] = useState(props.name);
+  const [role, setRole] = useState(props.role);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function updateEmployee() {
+    console.log('showing updated values of emplye and role')
+
+  };
 
   return (
     <>
@@ -27,21 +34,34 @@ function EmployeeEdit() {
           <Modal.Title>Update Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form action="" className="w-full max-w-sm ">
+          <form action="" className="w-full max-w-sm "
+           onSubmit={(e) =>{
+            handleClose()
+            e.preventDefault();
+            //console.log('hi from edit employee');
+            //console.log(props.id,name,role)
+            props.updateEmployee(props.id,name,role)
+          }}>
             <div className="flex flex-wrap justify-center p-3 ">
               <div className="mb-4 flex flex-col gap-4">
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
-                  value="name of employee"
+                  value={name}
+                  onChange={(e) =>{
+                    setName(e.target.value)
+                  }}
                 />
 
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
-                  value="role"
+                  value={role}
+                  onChange={(e) =>{
+                    setRole(e.target.value)
+                  }}
                 />
               </div>
 

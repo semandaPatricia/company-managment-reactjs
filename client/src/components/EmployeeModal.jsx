@@ -1,4 +1,4 @@
-import React from "react";
+{/*import React from "react";
 
 
 const EmployeeModal = ({ show }) => {
@@ -94,3 +94,4 @@ const EmployeeModal = ({ show }) => {
 };
 
 export default EmployeeModal;
+*/}
